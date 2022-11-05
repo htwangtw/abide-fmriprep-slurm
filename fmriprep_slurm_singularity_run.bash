@@ -1,14 +1,14 @@
 #!/bin/bash
 
-set -- "${1%/}" "${@:2}" # trick to remove last path char from first arg (dataset path)
+set -- "${1%/}" "${2%/}" "${@:3}" # trick to remove last path char from first arg (dataset path)
 PROJECT_PATH="/lustre03/project/6003287"
-DATASET_PATH=$1
+DATASET_PATH=$2
 DATASET_FOLDER="${DATASET_PATH%/*}"
 DATASET_NAME=${DATASET_PATH##*/}
-OUTPUT_ROOT=$2
-OUTPUT_DIR=$OUTPUT_ROOT/$DATASET_NAME/$(date +%s)
+OUTPUT_ROOT=$1
+OUTPUT_DIR=$OUTPUT_ROOT/$DATASET_NAME
 TEMPLATEFLOW_DIR=/home/$USER/.cache/templateflow
-PYTHON_CMD="python /fmriprep-slurm/fmriprep-slurm/main.py "$@" --output-path "$OUTPUT_DIR
+PYTHON_CMD="python /fmriprep-slurm/fmriprep-slurm/main.py "${@:2}" --output-path "$OUTPUT_DIR
 
 echo "###"
 echo "singularity_run.bash "$@
