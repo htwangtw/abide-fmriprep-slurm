@@ -1,7 +1,7 @@
 # abide-fmriprep-slurm
-Create SLURM scripts for preprocessing ABIDE 1 and 2 wih fMRIPrep.
 
-Hosting the script here before giga processing 2 is ready.
+Create SLURM scripts for preprocessing ABIDE 1 and 2 wih fMRIPrep.
+The process was done on Compute Canada Beluga.
 
 ## Dependency
 
