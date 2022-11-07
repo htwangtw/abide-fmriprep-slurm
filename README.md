@@ -14,3 +14,27 @@ A BIDS competable version of the ABIDE dataset are avalible through [datalad rep
 
 ## Generating slurm jobs with fMRIPrep slurm
 
+1. Set up your environment following [this tutorial](https://simexp-documentation.readthedocs.io/en/latest/giga_preprocessing/preprocessing.html)
+
+2. Run `./generate_slurm_script.sh`. It will call `generate_slurm_script.sh`; which is a modified version of `singularity_run.bash` from `fmriprep-slurm`.
+
+    You need: root of output directory, path to bids dataset, output derivative directory name.
+
+    A minimal use case of this version:
+    ```
+    bash ./fmriprep_slurm_singularity_run.bash \
+            ${OUTPUT_ROOT_PATH} \
+            ${BIDS_DATASET_PATH} \
+            derivatives
+    ```
+
+3. To submit jobs for each dataset, the command to use will be similar to this.
+    ```
+    find "$OUTPUT_DIR"/.slurm/smriprep_sub-*.sh -type f | while read file; do sbatch "$file"; done
+    ```
+    
+4. Archive the dataset. [See this page](https://simexp-documentation.readthedocs.io/en/latest/alliance_canada/tape.html)
+
+## Timeseries extraction 
+
+TBA
