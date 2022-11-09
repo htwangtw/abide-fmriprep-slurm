@@ -16,7 +16,7 @@ A BIDS competable version of the ABIDE dataset are avalible through [datalad rep
 
 1. Set up your environment following [this tutorial](https://simexp-documentation.readthedocs.io/en/latest/giga_preprocessing/preprocessing.html)
 
-2. Run `./generate_slurm_script.sh`. It will call `generate_slurm_script.sh`; which is a modified version of `singularity_run.bash` from `fmriprep-slurm`.
+2. Run `./generate_slurm_script.sh`. It will call `fmriprep_slurm_singularity_run.sh`; which is a modified version of `singularity_run.bash` from `fmriprep-slurm`.
 
     You need: root of output directory, path to bids dataset, output derivative directory name.
 
