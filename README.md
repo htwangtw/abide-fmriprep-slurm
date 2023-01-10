@@ -34,6 +34,7 @@ A BIDS competable version of the ABIDE dataset are avalible through [datalad rep
     ```
     
 4. Archive the dataset. [See this page](https://simexp-documentation.readthedocs.io/en/latest/alliance_canada/tape.html)
+
     Run the process on a computing node in a tmux session.
     ```
     tmux
@@ -46,6 +47,7 @@ A BIDS competable version of the ABIDE dataset are avalible through [datalad rep
     tar -vcf /nearline/ctb-pbellec/giga_preprocessing_2/${FILENAME}.tar.gz .
     ```
     We do not apply the compression (`-z`) flag to save computing time. 
+    
     Exit from the tmux session with key combo `ctrl-b-d`
 
 ## Timeseries extraction 
