@@ -10,7 +10,7 @@
 
 
 FMRIPREP_PATH="/lustre04/scratch/hwang1/abide2_fmriprep-20.2.1lts_1667762103"
-SITES=`ls $FMRIPREP_PATH`
+SITES=(`ls $FMRIPREP_PATH`)
 DATASET_NAME=`basename $FMRIPREP_PATH`
 
 ARCHIVE_PATH="/lustre03/nearline/6035398/giga_preprocessing_2/${DATASET_NAME}"
@@ -18,6 +18,7 @@ ARCHIVE_PATH="/lustre03/nearline/6035398/giga_preprocessing_2/${DATASET_NAME}"
 mkdir -p $ARCHIVE_PATH
 
 site=${SITES[${SLURM_ARRAY_TASK_ID} - 1 ]}
-
+echo $site
 cd ${FMRIPREP_PATH}/${site}
+echo $PWD
 tar -vcf ${ARCHIVE_PATH}/${site}.tar.gz .
