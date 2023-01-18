@@ -26,7 +26,7 @@ for site in ${SITES}; do
         fmriprep-${VERSION}lts \
         --fmriprep-args=\"--use-aroma\" \
         --email=${EMAIL} \
-        --time=24:00:00 \
+        --time=36:00:00 \
         --mem-per-cpu=12288 \
         --cpus=1 \
         --container fmriprep-${VERSION}lts
@@ -51,7 +51,7 @@ for site in ${SITES}; do
         fmriprep-${VERSION}lts \
         --fmriprep-args=\"--use-aroma\" \
         --email=${EMAIL} \
-        --time=24:00:00 \
+        --time=36:00:00 \
         --mem-per-cpu=12288 \
         --cpus=1 \
         --container fmriprep-${VERSION}lts
