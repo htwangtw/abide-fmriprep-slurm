@@ -33,22 +33,9 @@ A BIDS competable version of the ABIDE dataset are avalible through [datalad rep
     find "$OUTPUT_DIR"/.slurm/smriprep_sub-*.sh -type f | while read file; do sbatch "$file"; done
     ```
     
-4. Archive the dataset. [See this page](https://simexp-documentation.readthedocs.io/en/latest/alliance_canada/tape.html)
+4. Archive the dataset. [See this page to learn the basics.](https://simexp-documentation.readthedocs.io/en/latest/alliance_canada/tape.html)
 
-    Run the process on a computing node in a tmux session.
-    ```
-    tmux
-    salloc --account=rrg-pbellec --mem-per-cpu=8G --time=8:00:0 --cpus-per-task=1
-    ```
-    After starting the session, archive the data:
-    ```
-    cd /path/to/fmriprep/derivative
-    FILENAME=${PWD##*/} 
-    tar -vcf /nearline/ctb-pbellec/giga_preprocessing_2/${FILENAME}.tar.gz .
-    ```
-    We do not apply the compression (`-z`) flag to save computing time. 
-    
-    Exit from the tmux session with key combo `ctrl-b-d`
+    The fMRIPrep data will be archived by site.
 
 ## Timeseries extraction 
 
