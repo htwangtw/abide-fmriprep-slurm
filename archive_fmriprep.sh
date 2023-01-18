@@ -5,7 +5,7 @@
 #SBATCH --error=/lustre04/scratch/hwang1/logs/abide2_fmriprep_archive.%a.out
 #SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=8M
+#SBATCH --mem-per-cpu=8G
 #SBATCH --array=1-19
 
 
