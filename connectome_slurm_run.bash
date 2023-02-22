@@ -11,6 +11,7 @@ source /lustre03/project/6003287/${USER}/.virtualenvs/giga_connectome/bin/activa
 ABIDE2_FMRIPREP=/lustre04/scratch/${USER}/abide2_fmriprep-20.2.1lts_1667762103
 ABIDE2_CONNECTOME=/lustre04/scratch/${USER}/abide2_connectomes
 WORKINGDIR=${ABIDE2_CONNECTOME}/working_directory
+
 STRATEGIES=("simple" "simple+gsr" "scrubbing.5" "scrubbing.5+gsr" "scrubbing.2" "scrubbing.2+gsr" "acompcor50" "icaaroma")
 STRATEGY=${STRATEGIES[${SLURM_ARRAY_TASK_ID} - 1 ]}
 
@@ -27,8 +28,9 @@ if [ -d "${ABIDE2_FMRIPREP}/${SITE}/fmriprep-20.2.1lts" ]; then
 		--atlas ${ATLAS} \
 		--denoise-strategy ${STRATEGY} \
 		${ABIDE2_FMRIPREP}/${SITE}/fmriprep-20.2.1lts \
-		${ABIDE2_CONNECTOME}/${SITE} \
+		${SLURM_TMPDIR}/${SITE} \
 		group
+	rsync -rltv --info=progress2 $SLURM_TMPDIR/${SITE} ${ABIDE2_CONNECTOME}/
 else
     echo "no preprocessed data for ${SITE}"
 fi
