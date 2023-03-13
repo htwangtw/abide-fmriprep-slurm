@@ -17,8 +17,11 @@ mkdir -p $OUTPUT_PATH
 for site in ${SITES}; do
     # run BIDS validator on the dataset
     # you only need this done once
+    mkdir -p ${OUTPUT_PATH}/${site}
+
     singularity exec -B ${DATASET_PATH}/${site}:/DATA \
-        ${CONTAINER_PATH}/fmriprep-20.2.1lts.sif bids-validator /DATA
+        ${CONTAINER_PATH}/fmriprep-20.2.1lts.sif bids-validator --verbose /DATA \
+        > ${OUTPUT_PATH}/${site}/bids_validator.log
 
     bash ./fmriprep_slurm_singularity_run.bash \
         ${OUTPUT_PATH} \
@@ -40,10 +43,12 @@ SITES=`ls $DATASET_PATH`
 mkdir -p $OUTPUT_PATH
 
 for site in ${SITES}; do
+    mkdir -p ${OUTPUT_PATH}/${site}
     # run BIDS validator on the dataset
     # you only need this done once
     singularity exec -B ${DATASET_PATH}/${site}:/DATA \
-        ${CONTAINER_PATH}/fmriprep-20.2.1lts.sif bids-validator /DATA
+        ${CONTAINER_PATH}/fmriprep-20.2.1lts.sif bids-validator --verbose /DATA \
+        > ${OUTPUT_PATH}/${site}/bids_validator.log
 
     bash ./fmriprep_slurm_singularity_run.bash \
         ${OUTPUT_PATH} \
